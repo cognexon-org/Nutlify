@@ -32,15 +32,11 @@ export default function Footer() {
             <p className="mt-2">
               <a href={`mailto:${site.email}`} className="hover:text-cream">{site.email}</a>
             </p>
-            <p>{site.website}</p>
             <p>{site.location}</p>
           </div>
           <div>
             <p className="text-cream">Allergen information</p>
             <p className="mt-2 max-w-xs">Contains tree nuts: almonds, cashews, walnuts and pistachios.</p>
-            <p className="mt-3 flex items-center gap-2">
-              <VegMark /> Vegetarian. Country of origin: {site.countryOfOrigin}.
-            </p>
           </div>
           <div className="sm:text-right">
             <p>© {year} Nutlify. NUVANA is a product of Nutlify.</p>

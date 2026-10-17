@@ -38,8 +38,8 @@ export default function NextLines() {
           {lines.map((l) => (
             <li key={l.name} className="relative flex flex-col overflow-hidden rounded-2xl border border-line bg-bg p-6 pt-8">
               <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: l.color }} />
-              <NuvanaLogo className="h-3.5 w-auto opacity-80" />
-              <p className="mt-2 font-sans text-3xl font-semibold tracking-wide dark:brightness-[1.7]" style={{ color: l.color }}>
+              <NuvanaLogo className="h-6 w-32 justify-center items-center mx-auto" />
+              <p className="mt-4 font-sans text-3xl font-semibold tracking-wide dark:brightness-[1.7]" style={{ color: l.color }}>
                 {l.name}
               </p>
               <p className="mt-3 text-[0.98rem] text-muted">{l.body}</p>

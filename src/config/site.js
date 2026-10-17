@@ -15,7 +15,7 @@ export const site = {
   whatsapp: "",
   email: "nutlify@gmail.com",
   website: "nutlify.in",
-  location: "Kanpur, Uttar Pradesh",
+  location: "Downtown Kanpur, Uttar Pradesh",
 
   // Set a number (e.g. 699) once MRP is validated. null shows "Price on request".
   prices: {

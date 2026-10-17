@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import NutColumn from "./NutColumn";
 import Ornament from "./Ornament";
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
-import sprig from "../assets/gold-sprig.webp";
+import sprig from "../assets/gold-sprig1.png";
 import { site, contactLink } from "../config/site";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -46,21 +46,21 @@ export default function Hero() {
       {/* Gold botanicals, as on the cream box */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-[12%] left-[5.25rem] hidden xl:block xl:left-[8.25rem]"
+        className="pointer-events-none absolute inset-y-[20%] left-[5.25rem] hidden xl:block xl:left-[8.25rem]"
         initial={{ opacity: 0, x: -12 }}
         animate={{ opacity: 0.9, x: 0 }}
         transition={{ duration: 1.4, delay: 0.9, ease }}
       >
-        <img src={sprig} alt="" className="h-full max-h-[620px] w-auto" />
+        <img src={sprig} alt="" className="h-full max-h-[520px] w-auto" />
       </motion.div>
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-[12%] right-[5.25rem] hidden xl:block xl:right-[8.25rem]"
+        className="pointer-events-none absolute inset-y-[20%] right-[5.25rem] hidden xl:block xl:right-[8.25rem]"
         initial={{ opacity: 0, x: 12 }}
         animate={{ opacity: 0.9, x: 0 }}
         transition={{ duration: 1.4, delay: 0.9, ease }}
       >
-        <img src={sprig} alt="" className="h-full max-h-[620px] w-auto -scale-x-100" />
+        <img src={sprig} alt="" className="h-full max-h-[520px] w-auto -scale-x-100" />
       </motion.div>
 
       {/* The pack-front lockup */}
@@ -86,8 +86,8 @@ export default function Hero() {
         <motion.p variants={item} className="descriptor mt-4 text-sm sm:text-lg">
           {site.descriptor}
         </motion.p>
-        <motion.p variants={item} className="mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-xl">
-          Almonds, cashews, pistachios and walnuts, with pumpkin seeds, sunflower seeds and raisins.
+        <motion.p variants={item} className="mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-2xl">
+          Almonds, cashews, pistachios and walnuts, with seeds and raisins.
         </motion.p>
         <motion.div variants={item} className="my-7">
           <Ornament className="w-40 sm:w-56" />
