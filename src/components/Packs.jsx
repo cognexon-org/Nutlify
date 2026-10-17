@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { BoxArt, PouchArt } from "./PackArt";
+import { PouchArt } from "./PackArt";
+import BoxPhoto from "./BoxPhoto";
+import VegMark from "./VegMark";
 import { site, contactLink, contactLabel } from "../config/site";
 
 const price = (v) => (v ? `₹${v}` : "Price on request");
@@ -8,7 +10,7 @@ const packs = [
   {
     id: "box",
     name: "300 g box",
-    art: <BoxArt />,
+    art: <BoxPhoto />,
     price: price(site.prices.box300),
     body: "A presentable printed box for the pantry, for sharing at home, or for giving.",
     good: ["Home and family", "Gifting", "Guests and festivals"],
@@ -31,7 +33,8 @@ export default function Packs() {
       <div className="container-x">
         <div className="max-w-2xl">
           <h2 className="text-4xl text-ink sm:text-5xl">Two ways to take it home</h2>
-          <p className="mt-5 max-w-prose text-muted">
+          <p className="mt-5 max-w-prose font-serif text-xl leading-relaxed text-ink/90">NUVANA is {site.description.charAt(0).toLowerCase() + site.description.slice(1)}</p>
+          <p className="mt-3 max-w-prose text-muted">
             Same mix, same recipe, two sizes. Pick the box for the house and the pouch for your day.
           </p>
         </div>
@@ -40,8 +43,8 @@ export default function Packs() {
           {packs.map((p) => (
             <article key={p.id} className="flex flex-col">
               <motion.div
-                className="flex min-h-[22rem] items-end justify-center px-6 sm:min-h-[26rem]"
-                whileHover={{ y: -6, rotate: p.id === "box" ? -1 : 1 }}
+                className="flex min-h-[16rem] items-end justify-center sm:min-h-[26rem] sm:px-6"
+                whileHover={{ y: -6, rotate: p.id === "box" ? 0 : 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
               >
                 {p.art}
@@ -57,6 +60,13 @@ export default function Packs() {
                 <p className="mt-3 max-w-prose text-muted">{p.body}</p>
                 <p className="mt-4 text-sm text-muted">
                   Good for: <span className="text-ink">{p.good.join(", ").toLowerCase()}</span>
+                </p>
+                <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted">
+                  <span className="inline-flex items-center gap-2">
+                    <VegMark /> Vegetarian
+                  </span>
+                  <span>Contains tree nuts</span>
+                  <span>Made in {site.countryOfOrigin}</span>
                 </p>
                 <div className="mt-7">
                   <a href={contactLink(p.message)} target="_blank" rel="noreferrer" className="btn-primary">

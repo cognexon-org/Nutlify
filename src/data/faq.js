@@ -24,7 +24,16 @@ export const faq = [
       : `Tap any order button to email us at ${site.email}. We’ll confirm availability, price and delivery.`,
   },
   {
+    q: "Where do you deliver, and how do I pay?",
+    a: [
+      site.ordering.deliveryAreas
+        ? `We currently deliver to ${site.ordering.deliveryAreas}.`
+        : "We’re starting with local deliveries. Message us your city and pincode and we’ll confirm whether we can reach you.",
+      site.ordering.payment ? `You can pay by ${site.ordering.payment}.` : "We’ll share payment options when we confirm your order.",
+    ].join(" "),
+  },
+  {
     q: "Can I order NUVANA as a gift?",
-    a: "Yes. The 300 g box is designed to be given. For festive or bulk gifting, message us with the quantity and date you need it by.",
+    a: "Yes. The 300 g box is designed to be given. For festive or bulk orders, see the gifting section or message us with the quantity, date and delivery city.",
   },
 ];

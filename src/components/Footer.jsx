@@ -1,5 +1,6 @@
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
 import Ornament from "./Ornament";
+import VegMark from "./VegMark";
 import { site, contactLink, contactLabel } from "../config/site";
 
 export default function Footer() {
@@ -37,6 +38,9 @@ export default function Footer() {
           <div>
             <p className="text-cream">Allergen information</p>
             <p className="mt-2 max-w-xs">Contains tree nuts: almonds, cashews, walnuts and pistachios.</p>
+            <p className="mt-3 flex items-center gap-2">
+              <VegMark /> Vegetarian. Country of origin: {site.countryOfOrigin}.
+            </p>
           </div>
           <div className="sm:text-right">
             <p>© {year} Nutlify. NUVANA is a product of Nutlify.</p>

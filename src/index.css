@@ -72,6 +72,11 @@
   }
 }
 
+/* Header padding keeps the logo and buttons clear of the hero's nut columns at every width. */
+.header-pad { padding-inline: 3.75rem; }
+@media (min-width: 640px)  { .header-pad { padding-inline: 6.5rem; } }
+@media (min-width: 1024px) { .header-pad { padding-inline: max(2rem, calc(8.75rem - max(0px, (100vw - 72rem) / 2))); } }
+
 /* The signature nut column (borrowed from the box dieline).
    --w is the texture width; the tile is 152 x 2856 px, so its height is w x 18.79. */
 .nut-column {

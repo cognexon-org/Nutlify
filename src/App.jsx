@@ -1,8 +1,10 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Story from "./components/Story";
 import Blend from "./components/Blend";
 import Packs from "./components/Packs";
 import Moments from "./components/Moments";
+import Gifting from "./components/Gifting";
 import Process from "./components/Process";
 import Feedback from "./components/Feedback";
 import NextLines from "./components/NextLines";
@@ -21,9 +23,11 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Story />
         <Blend />
         <Packs />
         <Moments />
+        <Gifting />
         <Process />
         <Feedback />
         <NextLines />

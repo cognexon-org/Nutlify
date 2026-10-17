@@ -26,6 +26,34 @@ export const site = {
   // Optional. Fill these in once confirmed; empty values are not shown.
   fssai: "",
   instagram: "",
+  countryOfOrigin: "India",
+
+  // Approved copy from the back panel.
+  description: "A thoughtfully prepared blend of nuts, seeds and two varieties of raisins for everyday enjoyment.",
+
+  // DRAFT brand story, written from the strategy doc. Rewrite it in your own words.
+  // Set `signature` to e.g. "Your name, founder" to sign it; leave empty to hide.
+  story: {
+    heading: "Why we started Nutlify",
+    paragraphs: [
+      "Almonds, cashews, walnuts and raisins are already part of most Indian homes. We started Nutlify to make them easier to reach for every day: blended in the right proportions, packed well, and ready when you are.",
+      "NUVANA is our first mix. We’re making it in small batches and listening closely to everyone who tries it.",
+    ],
+    signature: "",
+  },
+
+  // Ordering details. Empty values fall back to "message us and we’ll confirm".
+  ordering: {
+    deliveryAreas: "", // e.g. "Kanpur and Lucknow"
+    payment: "", // e.g. "UPI or cash on delivery"
+  },
+
+  // Gifting details. Empty values are not shown.
+  gifting: {
+    minQuantity: "", // e.g. "10 boxes"
+    leadTime: "", // e.g. "5 working days"
+    messageCards: true, // set false if you don't offer personal message cards
+  },
 };
 
 /** Builds an order/enquiry link: WhatsApp if a number is set, otherwise email. */
