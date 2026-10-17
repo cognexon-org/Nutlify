@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>NUVANA by Nutlify | Premium Dry Fruit & Seed Mix</title>
+    <meta name="description" content="NUVANA is a premium mix of almonds, cashews, walnuts, pistachios, pumpkin seeds, sunflower seeds and two kinds of raisins, by Nutlify. Nourish Naturally. Thrive Daily." />
+    <meta name="theme-color" content="#FCF0DC" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script>
+      // Apply saved or system theme before paint to avoid a flash.
+      (function () {
+        try {
+          var saved = localStorage.getItem("nutlify-theme");
+          var dark = saved ? saved === "forest" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme tokens ----------
+   "Cream" (default) mirrors the cream packaging.
+   "Forest" (.dark) mirrors the dark-green packaging. */
+:root {
+  --bg: 252 240 220;        /* packaging cream */
+  --surface: 245 228 198;   /* parchment */
+  --ink: 58 34 20;          /* dark brown type */
+  --muted: 112 84 58;
+  --brand: 0 75 57;         /* NUVANA green, sampled from the logo */
+  --on-brand: 252 240 220;
+  --gold: 160 106 36;
+  --line: 222 198 160;
+  --band: 15 51 39;         /* deep forest bands */
+  color-scheme: light;
+}
+.dark {
+  --bg: 12 40 30;
+  --surface: 18 54 41;
+  --ink: 246 233 208;
+  --muted: 196 180 148;
+  --brand: 222 184 112;     /* gold leads on the forest theme, like the green box */
+  --on-brand: 12 40 30;
+  --gold: 214 170 92;
+  --line: 48 84 66;
+  --band: 6 28 20;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(5rem + env(safe-area-inset-top, 0px));
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  h1, h2, h3 {
+    @apply font-serif font-medium;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+  }
+  img { max-width: 100%; }
+  :focus-visible {
+    outline: 2px solid rgb(var(--gold));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection { background: rgb(var(--gold) / 0.3); }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.95rem] font-medium transition-colors duration-200;
+  }
+  .btn-primary { @apply btn bg-brand text-on-brand hover:bg-brand/90; }
+  .btn-ghost { @apply btn border border-line text-ink hover:border-gold hover:text-gold; }
+  /* The packaging descriptor: the only place we use spaced capitals */
+  .descriptor {
+    @apply font-sans font-medium uppercase text-gold;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* The signature nut column (borrowed from the box dieline).
+   --w is the texture width; the tile is 152 x 2856 px, so its height is w x 18.79. */
+.nut-column {
+  --w: 18px;
+  width: var(--w);
+  background-repeat: repeat-y;
+  background-size: var(--w) calc(var(--w) * 18.79);
+}
+.nut-column.size-lg { --w: 22px; }
+@media (min-width: 640px)  { .nut-column.size-lg { --w: 40px; } }
+@media (min-width: 1024px) { .nut-column.size-lg { --w: 60px; } }
+@keyframes drift-down { from { background-position: 0 0; } to { background-position: 0 calc(var(--w) * 18.79); } }
+@keyframes drift-up   { from { background-position: 0 calc(var(--w) * 18.79); } to { background-position: 0 0; } }
+.drift-down { animation: drift-down 90s linear infinite; }
+.drift-up   { animation: drift-up 90s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .drift-down, .drift-up { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
