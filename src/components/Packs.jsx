@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PouchArt } from "./PackArt";
+import PouchPhoto from "./PouchPhoto";
 import BoxPhoto from "./BoxPhoto";
 import VegMark from "./VegMark";
 import { site, contactLink, contactLabel } from "../config/site";
@@ -19,7 +19,7 @@ const packs = [
   {
     id: "pouch",
     name: "70 g zipper pouch",
-    art: <PouchArt />,
+    art: <PouchPhoto />,
     price: price(site.prices.pouch70),
     body: "A resealable pouch that fits in a bag or desk drawer. The easiest way to try NUVANA.",
     good: ["Trying it first", "Work and study", "Travel days"],

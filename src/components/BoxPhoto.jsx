@@ -11,7 +11,7 @@ export default function BoxPhoto({ invert = false, className = "" }) {
   const second = invert ? boxCream : boxMarigold;
   const alt = "NUVANA Premium Dry Fruit & Seed Mix, 300 g box";
   return (
-    <div className={`relative aspect-[2/1] w-full overflow-hidden rounded-2xl bg-[#1A120C] shadow-[0_30px_60px_-30px_rgba(58,34,20,0.6)] ${className}`}>
+    <div className={`relative aspect-[2/1] w-full overflow-hidden rounded-2xl bg-[#1A120C] dark:bg-[#05372A] shadow-[0_30px_60px_-30px_rgba(58,34,20,0.6)] ${className}`}>
       <img src={first} alt={alt} className="h-full w-full object-cover dark:hidden" loading="lazy" />
       <img src={second} alt={alt} className="hidden h-full w-full object-cover dark:block" loading="lazy" />
     </div>
