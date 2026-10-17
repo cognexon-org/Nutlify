@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { blend } from "../data/blend";
+import Plate from "./Plate";
 
 const ease = [0.22, 1, 0.36, 1];
 const packs = [
@@ -12,14 +13,42 @@ const fmt = (n) => (Number.isInteger(n) ? `${n} g` : `${n.toFixed(1)} g`);
 
 export default function Blend() {
   const [pack, setPack] = useState("g300");
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(null); // hovered or focused row
+  const [selected, setSelected] = useState(blend[0].name); // last tapped row
+
+  // Warm the cache so the first hover doesn't flash.
+  useEffect(() => {
+    blend.forEach((b) => {
+      const i = new Image();
+      i.src = b.img;
+    });
+  }, []);
+
+  const shown = blend.find((b) => b.name === (active ?? selected)) ?? blend[0];
+  const packName = pack === "g300" ? "300 g box" : "70 g pouch";
+  const spotlight = (size) => (
+    <div className={size === "sm" ? "flex items-center gap-5" : "flex flex-col items-center text-center"}>
+      <Plate
+        src={shown.img}
+        id={shown.name}
+        alt={shown.name}
+        className={size === "sm" ? "w-32" : "w-48 xl:w-64"}
+      />
+      <div className={size === "sm" ? "" : "mt-5"} aria-live="polite">
+        <p className="font-serif text-2xl text-ink">{shown.name}</p>
+        <p className="mt-1 text-sm text-muted">
+          {shown.pct}% of the mix, {fmt(shown[pack])} in a {packName}
+        </p>
+      </div>
+    </div>
+  );
 
   // The column reads top to bottom in the same order as the table.
   const stack = blend;
 
   return (
     <section id="inside" className="section">
-      <div className="container-x grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="container-x grid items-center gap-14 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div>
           <h2 className="max-w-[16ch] text-4xl text-ink sm:text-5xl">Eight ingredients, mixed to one recipe</h2>
           <p className="mt-5 max-w-prose text-muted">
@@ -56,6 +85,9 @@ export default function Blend() {
             ))}
           </div>
 
+          {/* Mobile spotlight: sits above the table so a tap shows its result */}
+          <div className="mt-8 lg:hidden">{spotlight("sm")}</div>
+
           {/* Ingredient table */}
           <table className="mt-6 w-full max-w-lg text-left">
             <caption className="sr-only">NUVANA ingredients by share and weight</caption>
@@ -75,8 +107,15 @@ export default function Blend() {
                   onMouseLeave={() => setActive(null)}
                   onFocus={() => setActive(b.name)}
                   onBlur={() => setActive(null)}
-                  className={`cursor-default border-b border-line/60 outline-none transition-colors ${
-                    active === b.name ? "bg-surface" : ""
+                  onClick={() => setSelected(b.name)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelected(b.name);
+                    }
+                  }}
+                  className={`cursor-pointer border-b border-line/60 outline-none transition-colors focus-visible:bg-surface ${
+                    shown.name === b.name ? "bg-surface" : ""
                   }`}
                 >
                   <td className="py-2.5 pl-2">
@@ -111,13 +150,14 @@ export default function Blend() {
         </div>
 
         {/* The column: the mix stacked by share */}
-        <div className="flex justify-center lg:justify-end">
-          <figure className="flex items-end gap-6">
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-end lg:gap-10">
+          <div className="hidden lg:block">{spotlight("lg")}</div>
+          <figure className="flex items-end gap-5">
             <motion.div
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.5 }}
-              className="relative flex h-[30rem] w-28 flex-col overflow-hidden rounded-t-full border-[3px] border-walnut bg-surface sm:h-[34rem] sm:w-32"
+              className="relative flex h-[26rem] w-24 flex-col overflow-hidden rounded-t-full border-[3px] border-walnut bg-surface sm:h-[30rem] lg:w-20 xl:w-24"
               role="img"
               aria-label="Column chart of the NUVANA recipe by share"
             >
@@ -132,10 +172,11 @@ export default function Blend() {
                   }}
                   onMouseEnter={() => setActive(b.name)}
                   onMouseLeave={() => setActive(null)}
+                  onClick={() => setSelected(b.name)}
                 >
                   <span
                     className={`absolute inset-0 transition-opacity duration-200 ${
-                      active && active !== b.name ? "bg-bg/65" : "bg-transparent"
+                      shown.name !== b.name ? "bg-bg/55" : "bg-transparent"
                     }`}
                   />
                 </motion.div>
@@ -144,12 +185,12 @@ export default function Blend() {
               <span className="pointer-events-none absolute inset-y-0 left-2 w-px bg-[#D99A2B]/70" />
               <span className="pointer-events-none absolute inset-y-0 right-2 w-px bg-[#D99A2B]/70" />
             </motion.div>
-            <figcaption className="flex h-[30rem] flex-col sm:h-[34rem]" aria-hidden="true">
+            <figcaption className="flex h-[26rem] flex-col sm:h-[30rem]" aria-hidden="true">
               {stack.map((b) => (
                 <span
                   key={b.name}
                   className={`flex items-center font-serif text-[0.95rem] leading-none transition-colors ${
-                    active === b.name ? "text-ink" : "text-muted"
+                    shown.name === b.name ? "text-ink" : "text-muted"
                   }`}
                   style={{ height: `${b.pct}%` }}
                 >
