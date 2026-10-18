@@ -12,6 +12,7 @@ const packs = [
     name: "300 g box",
     art: <BoxPhoto />,
     price: price(site.prices.box300),
+    hasPrice: !!site.prices.box300,
     body: "A presentable printed box for the pantry, for sharing at home, or for giving.",
     good: ["Home and family", "Gifting", "Guests and festivals"],
     message: "Hi Nutlify, I’d like to order the NUVANA 300 g box. Quantity: ",
@@ -21,6 +22,7 @@ const packs = [
     name: "70 g zipper pouch",
     art: <PouchPhoto />,
     price: price(site.prices.pouch70),
+    hasPrice: !!site.prices.pouch70,
     body: "A resealable pouch that fits in a bag or desk drawer. The easiest way to try NUVANA.",
     good: ["Trying it first", "Work and study", "Travel days"],
     message: "Hi Nutlify, I’d like to order the NUVANA 70 g pouch. Quantity: ",
@@ -55,7 +57,10 @@ export default function Packs() {
               <div className="mt-8 flex flex-1 flex-col">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="text-3xl text-ink">{p.name}</h3>
-                  <p className="shrink-0 font-serif text-xl text-gold">{p.price}</p>
+                  <p className="shrink-0 text-right">
+                    <span className="block font-serif text-2xl text-gold">{p.price}</span>
+                    {p.hasPrice && <span className="block text-xs text-muted">MRP, incl. of all taxes</span>}
+                  </p>
                 </div>
                 <p className="mt-3 max-w-prose text-muted">{p.body}</p>
                 <p className="mt-4 text-sm text-muted">

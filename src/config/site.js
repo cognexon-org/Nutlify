@@ -17,10 +17,11 @@ export const site = {
   website: "nutlify.in",
   location: "Downtown Kanpur, Uttar Pradesh",
 
-  // Set a number (e.g. 699) once MRP is validated. null shows "Price on request".
+  // MRP in rupees, inclusive of all taxes (from the final packaging).
+  // Set to null to show "Price on request" instead.
   prices: {
-    box300: null,
-    pouch70: null,
+    box300: 699,
+    pouch70: 89,
   },
 
   // Optional. Fill these in once confirmed; empty values are not shown.

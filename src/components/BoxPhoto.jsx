@@ -1,5 +1,5 @@
-import boxCream from "../assets/box-cream.webp";
-import boxMarigold from "../assets/box-marigold.webp";
+import boxCream from "../assets/box-cream1.png";
+import boxMarigold from "../assets/box-marigold1.png";
 
 /*
  * The 300 g box, shown with the packaging that matches the site theme.
@@ -11,9 +11,9 @@ export default function BoxPhoto({ invert = false, className = "" }) {
   const second = invert ? boxCream : boxMarigold;
   const alt = "NUVANA Premium Dry Fruit & Seed Mix, 300 g box";
   return (
-    <div className={`relative aspect-[2/1] w-full overflow-hidden rounded-2xl bg-[#1A120C] dark:bg-[#05372A] shadow-[0_30px_60px_-30px_rgba(58,34,20,0.6)] ${className}`}>
-      <img src={first} alt={alt} className="h-full w-full object-cover dark:hidden" loading="lazy" />
-      <img src={second} alt={alt} className="hidden h-full w-full object-cover dark:block" loading="lazy" />
+    <div className={`relative overflow-hidden rounded-2xl bg-[#1A120C] dark:bg-[#05372A] shadow-[0_30px_60px_-30px_rgba(58,34,20,0.6)] ${className}`}>
+      <img src={first} alt={alt} className="h-full w-full object-contain dark:hidden" loading="lazy" />
+      <img src={second} alt={alt} className="hidden h-full w-full object-contain dark:block" loading="lazy" />
     </div>
   );
 }

@@ -3,13 +3,14 @@ import { contactLink } from "../config/site";
 
 /*
  * Future concepts from the portfolio board, described by occasion only.
- * IRON+ is intentionally left out until its name and claim are reviewed.
+ * Descriptions stay neutral (no nutrient or benefit claims) until recipes and labels are final.
  */
 const lines = [
   { name: "DAILY", body: "An everyday blend, planned in single-serve and family sizes.", color: "#5E8F3A" },
   { name: "ACTIVE", body: "A portable single-serve snack for gym days and active routines.", color: "#C9632B" },
   { name: "FOCUS", body: "A nut-and-seed blend for long work and study days.", color: "#2F5E9E" },
   { name: "BALANCE", body: "A rounded mix of nuts and seeds for any time of day.", color: "#6B4A98" },
+  { name: "IRON+", body: "A nut, seed and dried-fruit blend, planned with dates and figs.", color: "#A8323A" },
 ];
 
 export default function NextLines() {
@@ -34,7 +35,7 @@ export default function NextLines() {
           </a>
         </div>
 
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {lines.map((l) => (
             <li key={l.name} className="relative flex flex-col overflow-hidden rounded-2xl border border-line bg-bg p-6 pt-8">
               <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: l.color }} />

@@ -34,10 +34,6 @@ export default function Footer() {
             </p>
             <p>{site.location}</p>
           </div>
-          <div>
-            <p className="text-cream">Allergen information</p>
-            <p className="mt-2 max-w-xs">Contains tree nuts: almonds, cashews, walnuts and pistachios.</p>
-          </div>
           <div className="sm:text-right">
             <p>© {year} Nutlify. NUVANA is a product of Nutlify.</p>
             {site.fssai && <p className="mt-1">FSSAI Lic. No. {site.fssai}</p>}
