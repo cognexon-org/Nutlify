@@ -50,7 +50,7 @@ export default function Blend() {
     <section id="inside" className="section">
       <div className="container-x grid items-center gap-14 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div>
-          <h2 className="max-w-[16ch] text-4xl text-ink sm:text-5xl">Eight ingredients, mixed to one recipe</h2>
+          <h2 className="max-w-[20ch] text-4xl text-ink sm:text-5xl">Nuts, seeds and raisins, mixed to one recipe</h2>
           <p className="mt-5 max-w-prose text-muted">
             Every batch of NUVANA follows the same written proportions, so the mix in your pack stays familiar
             from one handful to the next. Here is exactly how it breaks down.

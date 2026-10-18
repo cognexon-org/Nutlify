@@ -3,7 +3,7 @@ import { site } from "../config/site";
 export const faq = [
   {
     q: "What exactly is in NUVANA?",
-    a: "Almonds, cashews, walnuts, pistachios, pumpkin seeds, sunflower seeds, regular raisins and black raisins. That’s the full ingredient list.",
+    a: "Almonds, cashews, walnuts, pistachios, seeds and raisins. The full ingredient list is printed on every pack.",
   },
   {
     q: "Does it contain allergens?",

@@ -29,8 +29,8 @@ export const site = {
   instagram: "",
   countryOfOrigin: "India",
 
-  // Approved copy from the back panel.
-  description: "A thoughtfully prepared blend of nuts, seeds and two varieties of raisins for everyday enjoyment.",
+  // Adapted from the back panel.
+  description: "A thoughtfully prepared blend of nuts, seeds and raisins for everyday enjoyment.",
 
   // DRAFT brand story, written from the strategy doc. Rewrite it in your own words.
   // Set `signature` to e.g. "Your name, founder" to sign it; leave empty to hide.

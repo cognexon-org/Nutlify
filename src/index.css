@@ -59,7 +59,7 @@
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
-  .section { @apply py-20 sm:py-28; }
+  .section { @apply py-16 sm:py-24; }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.95rem] font-medium transition-colors duration-200;
   }

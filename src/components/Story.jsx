@@ -5,7 +5,7 @@ export default function Story() {
   const { heading, paragraphs, signature } = site.story;
   if (!paragraphs?.length) return null;
   return (
-    <section id="story" className="section border-t border-line/70" aria-labelledby="story-title">
+    <section id="story" className="py-12 border-t border-b border-line/70" aria-labelledby="story-title">
       <div className="container-x flex flex-col items-center text-center">
         <h2 id="story-title" className="text-4xl text-ink sm:text-5xl">{heading}</h2>
         <Ornament className="mt-6 w-40" />
