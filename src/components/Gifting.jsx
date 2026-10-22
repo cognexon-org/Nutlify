@@ -1,4 +1,4 @@
-import BoxPhoto from "./BoxPhoto";
+import GiftBoxPhoto from "./GiftBoxPhoto";
 import { site, contactLink } from "../config/site";
 
 export default function Gifting() {
@@ -13,15 +13,14 @@ export default function Gifting() {
   return (
     <section id="gifting" className="section" aria-labelledby="gifting-title">
       <div className="container-x grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-        {/* Shows the opposite box design to the Packs section */}
-        <BoxPhoto invert />
+        <GiftBoxPhoto />
 
         <div>
           <h2 id="gifting-title" className="max-w-[16ch] text-4xl text-ink sm:text-5xl">
             For Diwali, weddings and every thank-you
           </h2>
           <p className="mt-5 max-w-prose text-muted">
-            The NUVANA box is made to be given. Order a few for family visits, or a larger batch for your team,
+            NUVANA comes in a gift box made for the occasion. Order a few for family visits, or a larger batch for your team,
             clients or wedding guests.
           </p>
           <ul className="mt-6 space-y-2.5">

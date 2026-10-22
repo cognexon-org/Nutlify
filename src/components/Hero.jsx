@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import NutColumn from "./NutColumn";
 import Ornament from "./Ornament";
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
-import sprig from "../assets/gold-sprig1.png";
+import sprig from "../assets/gold-sprig1.webp";
 import { site, contactLink } from "../config/site";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -87,7 +87,7 @@ export default function Hero() {
           {site.descriptor}
         </motion.p>
         <motion.p variants={item} className="mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-2xl">
-          Almonds, cashews, pistachios and walnuts, with seeds and raisins.
+          Sliced almonds, cashews, pistachios and walnuts, with seeds and raisins.
         </motion.p>
         <motion.div variants={item} className="my-7">
           <Ornament className="w-40 sm:w-56" />

@@ -52,8 +52,7 @@ export default function Blend() {
         <div>
           <h2 className="max-w-[20ch] text-4xl text-ink sm:text-5xl">Nuts, seeds and raisins, mixed to one recipe</h2>
           <p className="mt-5 max-w-prose text-muted">
-            Every batch of NUVANA follows the same written proportions, so the mix in your pack stays familiar
-            from one handful to the next. Here is exactly how it breaks down.
+            Every nut in NUVANA is sliced, and every batch follows the same written proportions, so each handful has a little of everything. Here is how it breaks down.
           </p>
 
           {/* Pack switch */}

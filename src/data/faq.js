@@ -3,7 +3,11 @@ import { site } from "../config/site";
 export const faq = [
   {
     q: "What exactly is in NUVANA?",
-    a: "Almonds, cashews, walnuts, pistachios, seeds and raisins. The full ingredient list is printed on every pack.",
+    a: "Sliced almonds, cashews, walnuts and pistachios, with seeds and raisins. The full ingredient list is printed on every pack.",
+  },
+  {
+    q: "Why is everything sliced?",
+    a: "Slicing means every handful has a little of each nut, instead of one whole almond or cashew. It also makes NUVANA easy to sprinkle over breakfast, desserts or a bowl of curd.",
   },
   {
     q: "Does it contain allergens?",
