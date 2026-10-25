@@ -2,20 +2,16 @@ import { site } from "../config/site";
 
 export const faq = [
   {
-    q: "What exactly is in NUVANA?",
-    a: "Sliced almonds, cashews, walnuts and pistachios, with seeds and raisins. The full ingredient list is printed on every pack.",
-  },
-  {
-    q: "Why is everything sliced?",
-    a: "Slicing means every handful has a little of each nut, instead of one whole almond or cashew. It also makes NUVANA easy to sprinkle over breakfast, desserts or a bowl of curd.",
+    q: "What’s in each NUVANA mix?",
+    a: "The Dry Fruit & Seed Mix has almonds, cashews, nuts, raisins and seeds. The Fruit & Berries Mix has kiwi, berries, mango and cherry. The full ingredient list is printed on every pack.",
   },
   {
     q: "Does it contain allergens?",
-    a: "Yes. NUVANA contains tree nuts: almonds, cashews, walnuts and pistachios. Please check the pack label before eating if you have a nut allergy.",
+    a: "The Dry Fruit & Seed Mix contains nuts. For the Fruit & Berries Mix, please check the allergen information on the pack. If you have a food allergy, always read the label before eating.",
   },
   {
     q: "Which pack should I pick?",
-    a: "The 300 g box suits home, sharing and gifting. The 70 g zipper pouch is easy to carry and a good way to try the mix first.",
+    a: "The pouches (70 g Dry Fruit & Seed, 80 g Fruit & Berries) are easy to carry and a good way to try each mix. The 300 g box of the Dry Fruit & Seed Mix suits home and sharing. For gifts, see the Diwali gift bag and the two-jar gift box.",
   },
   {
     q: "How should I store it?",
@@ -38,6 +34,6 @@ export const faq = [
   },
   {
     q: "Can I order NUVANA as a gift?",
-    a: "Yes. The 300 g box is designed to be given. For festive or bulk orders, see the gifting section or message us with the quantity, date and delivery city.",
+    a: "Yes. Choose the Diwali gift bag (both pouches and a card) or the gift box with two jars, or give the 300 g box. For bulk orders, message us with the quantity, date and delivery city.",
   },
 ];

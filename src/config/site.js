@@ -20,8 +20,11 @@ export const site = {
   // MRP in rupees, inclusive of all taxes (from the final packaging).
   // Set to null to show "Price on request" instead.
   prices: {
-    box300: 699,
-    pouch70: 89,
+    box300: 699, // Dry Fruit & Seed Mix, 300 g box
+    dryFruit70: 99, // Dry Fruit & Seed Mix, 70 g pouch
+    berries80: 99, // Fruit & Berries Mix, 80 g pouch
+    giftBag: null, // Diwali gift bag (both pouches + card)
+    giftBox: null, // Gift box with two jars
   },
 
   // Optional. Fill these in once confirmed; empty values are not shown.
@@ -29,8 +32,8 @@ export const site = {
   instagram: "",
   countryOfOrigin: "India",
 
-  // Adapted from the back panel.
-  description: "A thoughtfully prepared blend of nuts, seeds and raisins for everyday enjoyment.",
+  // Used for the site's link preview and the Packs intro.
+  description: "Two mixes for everyday enjoyment: a dry fruit & seed mix and a fruit & berries mix.",
 
   // DRAFT brand story, written from the strategy doc. Rewrite it in your own words.
   // Set `signature` to e.g. "Your name, founder" to sign it; leave empty to hide.
@@ -38,7 +41,7 @@ export const site = {
     heading: "Why we started Nutlify",
     paragraphs: [
       "Almonds, cashews, walnuts and raisins are already part of most Indian homes. We started Nutlify to make them easier to reach for every day: blended in the right proportions, packed well, and ready when you are.",
-      "NUVANA is our first mix. We’re making it in small batches and listening closely to everyone who tries it.",
+      "NUVANA is our first range: a Dry Fruit & Seed Mix and a Fruit & Berries Mix. We’re making them in small batches and listening closely to everyone who tries them.",
     ],
     signature: "",
   },

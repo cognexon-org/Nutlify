@@ -87,7 +87,7 @@ export default function Hero() {
           {site.descriptor}
         </motion.p>
         <motion.p variants={item} className="mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-2xl">
-          Sliced almonds, cashews, pistachios and walnuts, with seeds and raisins.
+          Almonds • Cashews • Nuts • Raisins • Seeds
         </motion.p>
         <motion.div variants={item} className="my-7">
           <Ornament className="w-40 sm:w-56" />

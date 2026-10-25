@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import NutColumn from "./NutColumn";
 import { site, contactLink } from "../config/site";
 
-const packOptions = ["300 g box", "70 g pouch", "Haven’t tried it yet"];
+const packOptions = ["Dry Fruit & Seed Mix", "Fruit & Berries Mix", "Both", "A gift pack", "Haven’t tried it yet"];
 
 export default function Feedback() {
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ export default function Feedback() {
           <h2 className="max-w-[14ch] text-4xl text-ink sm:text-5xl">Our first batch is small, on purpose</h2>
           <p className="mt-5 max-w-prose text-muted">
             We’re making NUVANA in a limited first run to get the taste, the packs and the price right before we make
-            more. If you’ve tried it, tell us honestly what you think: sweetness, crunch, the mix of nuts and seeds,
+            more. If you’ve tried it, tell us honestly what you think: sweetness, crunch, the mix of nuts, seeds and fruit,
             the pack, and what you’d pay.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function Feedback() {
           </label>
 
           <fieldset className="flex flex-col gap-2">
-            <legend className="mb-2 text-sm text-muted">Which pack did you try?</legend>
+            <legend className="mb-2 text-sm text-muted">Which did you try?</legend>
             <div className="flex flex-wrap gap-2">
               {packOptions.map((o) => (
                 <label
@@ -83,7 +83,7 @@ export default function Feedback() {
               aria-invalid={!!error}
               aria-describedby={error ? "feedback-error" : undefined}
               className="resize-y rounded-lg border border-line bg-bg px-4 py-3 text-ink outline-none transition-colors placeholder:text-muted/60 focus:border-gold"
-              placeholder="The raisins were a little sweet for me, but the 70 g pouch is a perfect size…"
+              placeholder="Loved the berries mix, and the 70 g pouch is a perfect size…"
             />
           </label>
           {error && (
