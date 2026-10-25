@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NutlifyLogo } from "./Logo";
 import ThemeToggle from "./ThemeToggle";
-import { contactLink } from "../config/site";
 
 const links = [
   { href: "#inside", label: "What’s inside" },
@@ -51,13 +50,8 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
-            href={contactLink("Hi Nutlify, I’d like to order NUVANA.")}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex"
-          >
-            Order NUVANA
+          <a href="#packs" className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
+            Shop NUVANA
           </a>
           <button
             type="button"
@@ -96,13 +90,8 @@ export default function Header() {
                 </li>
               ))}
               <li className="pt-6">
-                <a
-                  href={contactLink("Hi Nutlify, I’d like to order NUVANA.")}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary w-full"
-                >
-                  Order NUVANA
+                <a href="#packs" onClick={() => setOpen(false)} className="btn-primary w-full">
+                  Shop NUVANA
                 </a>
               </li>
             </ul>

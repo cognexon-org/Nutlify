@@ -3,8 +3,8 @@ import BoxPhoto from "./BoxPhoto";
 import VegMark from "./VegMark";
 import { mixes } from "../data/mixes";
 import { site, contactLink, contactLabel } from "../config/site";
-import pouchDryFruit from "../assets/pouch-dryfruit.webp";
-import pouchBerries from "../assets/pouch-berries.webp";
+import pouchDryFruit from "../assets/pouch-cream.webp";
+import pouchBerries from "../assets/pouch-berries.png";
 
 const price = (v) => (v ? `₹${v}` : "Price on request");
 const dryFruit = mixes.find((m) => m.id === "dryfruit");

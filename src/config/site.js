@@ -21,9 +21,9 @@ export const site = {
   // Set to null to show "Price on request" instead.
   prices: {
     box300: 699, // Dry Fruit & Seed Mix, 300 g box
-    dryFruit70: 99, // Dry Fruit & Seed Mix, 70 g pouch
-    berries80: 99, // Fruit & Berries Mix, 80 g pouch
-    giftBag: null, // Diwali gift bag (both pouches + card)
+    dryFruit70: 120, // Dry Fruit & Seed Mix, 70 g pouch
+    berries80: 120, // Fruit & Berries Mix, 80 g pouch
+    giftBag: 250, // Diwali gift bag (both pouches + card)
     giftBox: null, // Gift box with two jars
   },
 

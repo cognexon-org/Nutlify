@@ -1,9 +1,11 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import NutColumn from "./NutColumn";
 import Ornament from "./Ornament";
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
 import sprig from "../assets/gold-sprig1.webp";
-import { site, contactLink } from "../config/site";
+import { site } from "../config/site";
+import { mixes } from "../data/mixes";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -17,7 +19,54 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
 };
 
+// The middle of the lockup alternates between the two mixes, worded exactly as on each pack.
+const slides = mixes.map((m) => ({
+  id: m.id,
+  name: m.name,
+  descriptor: m.descriptor,
+  ingredients: m.ingredients.map((i) => i.name).join(" • "),
+  line: m.line,
+}));
+const INTERVAL = 6000;
+
+/* Stacks every slide in one grid cell, so the height never jumps; only the active one is visible. */
+function Rotating({ index, render, className = "" }) {
+  return (
+    <div className={`grid ${className}`}>
+      {slides.map((sl, i) => (
+        <motion.div
+          key={sl.id}
+          className="col-start-1 row-start-1"
+          initial={false}
+          animate={{ opacity: i === index ? 1 : 0, y: i === index ? 0 : 6 }}
+          transition={{ duration: 0.9, ease }}
+          aria-hidden={i !== index}
+        >
+          {render(sl)}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+  const paused = useRef(false);
+  const [reduced] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+
+  useEffect(() => {
+    if (reduced || slides.length < 2) return;
+    const t = setInterval(() => {
+      if (!paused.current && !document.hidden) setIndex((i) => (i + 1) % slides.length);
+    }, INTERVAL);
+    return () => clearInterval(t);
+  }, [reduced]);
+
+  const pause = () => (paused.current = true);
+  const resume = () => (paused.current = false);
+
   return (
     <section
       id="top"
@@ -83,26 +132,61 @@ export default function Hero() {
           <span className="sr-only">NUVANA, </span>
           <NuvanaLogo className="mx-auto h-auto w-[min(26rem,100%)]" />
         </motion.h1>
-        <motion.p variants={item} className="descriptor mt-4 text-sm sm:text-lg">
-          {site.descriptor}
-        </motion.p>
-        <motion.p variants={item} className="mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-2xl">
-          Almonds • Cashews • Nuts • Raisins • Seeds
-        </motion.p>
-        <motion.div variants={item} className="my-7">
-          <Ornament className="w-40 sm:w-56" />
-        </motion.div>
-        <motion.p variants={item} className="font-serif text-3xl text-brand sm:text-4xl">
-          {site.productLine}
-        </motion.p>
-        <motion.div variants={item} className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
-          <a
-            href={contactLink("Hi Nutlify, I’d like to order NUVANA.")}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary min-w-[12rem]"
-          >
-            Order NUVANA
+        {/* Rotating middle: pauses while hovered or focused */}
+        <div
+          className="flex w-full flex-col items-center"
+          onMouseEnter={pause}
+          onMouseLeave={resume}
+          onFocus={pause}
+          onBlur={resume}
+        >
+          <motion.div variants={item} className="mt-4 w-full">
+            <Rotating
+              index={index}
+              render={(sl) => (
+                <>
+                  <p className="descriptor text-sm sm:text-lg">{sl.descriptor}</p>
+                  <p className="mx-auto mt-5 max-w-md font-serif text-lg leading-relaxed text-ink/90 sm:text-2xl">
+                    {sl.ingredients}
+                  </p>
+                </>
+              )}
+            />
+          </motion.div>
+          <motion.div variants={item} className="my-7">
+            <Ornament className="w-40 sm:w-56" />
+          </motion.div>
+          <motion.div variants={item} className="w-full">
+            <Rotating
+              index={index}
+              render={(sl) => <p className="font-serif text-3xl text-brand sm:text-4xl">{sl.line}</p>}
+            />
+          </motion.div>
+
+          {/* Dots */}
+          <motion.div variants={item} className="mt-6 flex items-center gap-1" role="group" aria-label="Choose a mix">
+            {slides.map((sl, i) => (
+              <button
+                key={sl.id}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-pressed={i === index}
+                aria-label={`Show ${sl.name}`}
+                className="grid h-8 w-8 place-items-center rounded-full"
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all duration-500 ${
+                    i === index ? "w-6 bg-gold" : "w-2 bg-gold/35 hover:bg-gold/60"
+                  }`}
+                />
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
+        <motion.div variants={item} className="mt-6 flex flex-col items-center gap-3 sm:flex-row">
+          <a href="#packs" className="btn-primary min-w-[12rem]">
+            Shop NUVANA
           </a>
           <a href="#inside" className="btn-ghost min-w-[12rem]">
             See what’s inside
