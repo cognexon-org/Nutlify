@@ -24,7 +24,7 @@ export const site = {
     dryFruit70: 120, // Dry Fruit & Seed Mix, 70 g pouch
     berries80: 120, // Fruit & Berries Mix, 80 g pouch
     giftBag: 250, // Diwali gift bag (both pouches + card)
-    giftBox: null, // Gift box with two jars
+    giftBox: 699, // Gift box with two jars
   },
 
   // Optional. Fill these in once confirmed; empty values are not shown.
