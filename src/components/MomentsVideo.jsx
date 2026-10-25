@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import videoMp4 from "../assets/video/moments.mp4";
+import videoMp4 from "../assets/video/moments-1.mp4";
 import videoWebm from "../assets/video/moments.webm";
 import poster from "../assets/video/moments-poster.webp";
 
