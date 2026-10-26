@@ -63,14 +63,14 @@ export default function Gifting({ products = [] }) {
                 <PriceTag product={p} />
               </div>
               <p className="mt-3 max-w-prose text-muted">{p.description}</p>
-              {(site.shipping?.offers || [])
+              {/* {(site.shipping?.offers || [])
                 .filter((o) => o.slug === p.slug)
                 .map((o) => (
                   <p key={o.label} className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-brand/10 px-3 py-1.5 text-sm font-medium text-brand">
                     <span className="h-1.5 w-1.5 rotate-45 bg-gold" aria-hidden="true" />
                     Order {o.minQty} or more: free delivery
                   </p>
-                ))}
+                ))} */}
               <div className="mt-auto flex flex-wrap items-center gap-3 pt-7">
                 <AddToCart product={p} />
                 <a

@@ -22,13 +22,14 @@ export const site = {
 
   // Delivery charges (rupees), decided by the delivery address at checkout:
   //   local = pincodes starting with these prefixes (Kanpur), state = rest of Uttar Pradesh, rest = rest of India.
-  // offers = free delivery when the cart has at least `minQty` of a product (matched by its slug).
+  // offers = free delivery when the cart has at least `minQty` of a product (matched by its slug). Currently none.
   // Admins can also create "Free delivery" coupon codes in Admin > Coupons.
   shipping: {
     local: { label: "Kanpur", pincodePrefixes: ["208"], fee: 0 },
     state: { label: "Uttar Pradesh", name: "Uttar Pradesh", fee: 60 },
     rest: { label: "Rest of India", fee: 100 },
-    offers: [{ slug: "diwali-gift-bag", minQty: 2, label: "Free delivery on 2 or more Diwali gift bags" }],
+    // Product offers, e.g. [{ slug: "diwali-gift-bag", minQty: 2, label: "Free delivery on 2 or more Diwali gift bags" }]
+    offers: [],
   },
   // Most of one item a customer can buy in one order.
   maxQtyPerItem: 20,
