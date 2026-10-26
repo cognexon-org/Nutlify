@@ -1,8 +1,10 @@
+"use client";
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { faq } from "../data/faq";
-import { site } from "../config/site";
+import { faq } from "@/data/faq";
+import { site } from "@/config/site";
 
 export default function Faq() {
   const [open, setOpen] = useState(0);
@@ -13,7 +15,18 @@ export default function Faq() {
         <div>
           <h2 className="text-4xl text-ink sm:text-5xl">Questions, answered</h2>
           <p className="mt-5 max-w-sm text-muted">
-            Can’t find what you need? Write to us at{" "}
+            Can’t find what you need?{" "}
+            {site.whatsapp ? (
+              <>
+                Message us on{" "}
+                <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer" className="text-ink underline decoration-gold/60 underline-offset-4 hover:decoration-gold">
+                  WhatsApp
+                </a>{" "}
+                or write to{" "}
+              </>
+            ) : (
+              "Write to us at "
+            )}
             <a href={`mailto:${site.email}`} className="text-ink underline decoration-gold/60 underline-offset-4 hover:decoration-gold">
               {site.email}
             </a>

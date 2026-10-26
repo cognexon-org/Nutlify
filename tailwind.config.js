@@ -1,8 +1,8 @@
-/** @type {import('tailwindcss').Config} */
 const v = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
-export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
   darkMode: "class",
   theme: {
     extend: {

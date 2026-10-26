@@ -1,7 +1,9 @@
-import nutlifyGreen from "../assets/nutlify-logo-green.png";
-import nutlifyCream from "../assets/nutlify-logo-cream.png";
-import nuvanaGreen from "../assets/nuvana-logo-green.png";
-import nuvanaGold from "../assets/nuvana-logo-gold.png";
+"use client";
+
+const nutlifyGreen = "/assets/nutlify-logo-green.png";
+const nutlifyCream = "/assets/nutlify-logo-cream.png";
+const nuvanaGreen = "/assets/nuvana-logo-green.png";
+const nuvanaGold = "/assets/nuvana-logo-gold.png";
 
 /*
  * The supplied wordmarks are used as-is (only recoloured for dark

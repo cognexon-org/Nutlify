@@ -12,20 +12,28 @@ export const site = {
 
   // WhatsApp number in international format, digits only, e.g. "919812345678".
   // Leave empty to hide WhatsApp buttons (orders then fall back to email).
-  whatsapp: "",
+  // WhatsApp for enquiries (digits only, with country code). Leave empty to fall back to email.
+  whatsapp: "917860274086",
   email: "nutlify@gmail.com",
   website: "nutlify.in",
   location: "Downtown Kanpur, Uttar Pradesh",
 
-  // MRP in rupees, inclusive of all taxes (from the final packaging).
-  // Set to null to show "Price on request" instead.
-  prices: {
-    box300: 699, // Dry Fruit & Seed Mix, 300 g box
-    dryFruit70: 120, // Dry Fruit & Seed Mix, 70 g pouch
-    berries80: 120, // Fruit & Berries Mix, 80 g pouch
-    giftBag: 250, // Diwali gift bag (both pouches + card)
-    giftBox: 699, // Gift box with two jars
+  // Product prices and stock now live in the database: edit them in the admin panel (/admin/products).
+
+  // Delivery charges (rupees), decided by the delivery address at checkout:
+  //   local = pincodes starting with these prefixes (Kanpur), state = rest of Uttar Pradesh, rest = rest of India.
+  // offers = free delivery when the cart has at least `minQty` of a product (matched by its slug).
+  // Admins can also create "Free delivery" coupon codes in Admin > Coupons.
+  shipping: {
+    local: { label: "Kanpur", pincodePrefixes: ["208"], fee: 0 },
+    state: { label: "Uttar Pradesh", name: "Uttar Pradesh", fee: 60 },
+    rest: { label: "Rest of India", fee: 100 },
+    offers: [{ slug: "diwali-gift-bag", minQty: 2, label: "Free delivery on 2 or more Diwali gift bags" }],
   },
+  // Most of one item a customer can buy in one order.
+  maxQtyPerItem: 20,
+  // Optional: only accept these pincode prefixes, e.g. ["208", "226"]. Empty = deliver anywhere in India.
+  pincodePrefixes: [],
 
   // Optional. Fill these in once confirmed; empty values are not shown.
   fssai: "",
@@ -67,4 +75,10 @@ export function contactLink(message) {
   return `mailto:${site.email}?subject=${encodeURIComponent("NUVANA enquiry")}&body=${text}`;
 }
 
-export const contactLabel = () => (site.whatsapp ? "Order on WhatsApp" : "Order by email");
+export const contactLabel = () => (site.whatsapp ? "Enquire on WhatsApp" : "Enquire by email");
+
+/** "917860274086" -> "+91 78602 74086" */
+export const whatsappDisplay = () => {
+  const d = site.whatsapp || "";
+  return d.length === 12 && d.startsWith("91") ? `+91 ${d.slice(2, 7)} ${d.slice(7)}` : d ? `+${d}` : "";
+};

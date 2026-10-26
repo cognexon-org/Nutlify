@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { mixes } from "../data/mixes";
+import { mixes } from "@/data/mixes";
 import Plate from "./Plate";
 
 export default function Blend() {

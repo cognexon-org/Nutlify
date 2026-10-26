@@ -1,3 +1,5 @@
+"use client";
+
 /** The vegetarian symbol: a green dot in a green square. */
 export default function VegMark({ className = "h-4 w-4" }) {
   return (

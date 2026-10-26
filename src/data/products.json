@@ -1,0 +1,72 @@
+[
+  {
+    "slug": "dryfruit-70g-pouch",
+    "name": "Dry Fruit & Seed Mix",
+    "variant": "70 g pouch",
+    "category": "pack",
+    "mix": "dryfruit",
+    "description": "Almonds, cashews, nuts, raisins and seeds in a resealable pouch for your bag or desk drawer.",
+    "price": 120,
+    "stock": 20,
+    "active": true,
+    "purchasable": true,
+    "image": "/assets/pouch-cream.webp",
+    "sort": 1
+  },
+  {
+    "slug": "berries-80g-pouch",
+    "name": "Fruit & Berries Mix",
+    "variant": "80 g pouch",
+    "category": "pack",
+    "mix": "berries",
+    "description": "Kiwi, berries, mango and cherry in a resealable pouch. A sweeter, fruitier companion to the dry fruit mix.",
+    "price": 120,
+    "stock": 20,
+    "active": true,
+    "purchasable": true,
+    "image": "/assets/pouch-berries.webp",
+    "sort": 2
+  },
+  {
+    "slug": "dryfruit-300g-box",
+    "name": "Dry Fruit & Seed Mix",
+    "variant": "300 g box",
+    "category": "pack",
+    "mix": "dryfruit",
+    "description": "The Dry Fruit & Seed Mix in a presentable printed box for the pantry, for sharing at home, or for giving.",
+    "price": 699,
+    "stock": 20,
+    "active": true,
+    "purchasable": true,
+    "image": "/assets/box-cream-gift.webp",
+    "sort": 3
+  },
+  {
+    "slug": "diwali-gift-bag",
+    "name": "Diwali gift bag",
+    "variant": "Both pouches + card",
+    "category": "gift",
+    "mix": "both",
+    "description": "One Dry Fruit & Seed Mix pouch (70 g), one Fruit & Berries Mix pouch (80 g) and a Happy Diwali card, in a frosted carry bag.",
+    "price": 250,
+    "stock": 20,
+    "active": true,
+    "purchasable": true,
+    "image": "/assets/giftbag-diwali.webp",
+    "sort": 4
+  },
+  {
+    "slug": "gift-box-two-jars",
+    "name": "Gift box with two jars",
+    "variant": "Two jars",
+    "category": "gift",
+    "mix": "both",
+    "description": "One jar of the Dry Fruit & Seed Mix and one jar of the Fruit & Berries Mix, in a rigid box with a magnetic lid.",
+    "price": 699,
+    "stock": 20,
+    "active": true,
+    "purchasable": true,
+    "image": "/assets/giftbox-cream.webp",
+    "sort": 5
+  }
+]

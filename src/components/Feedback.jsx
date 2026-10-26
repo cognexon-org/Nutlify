@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import NutColumn from "./NutColumn";
-import { site, contactLink } from "../config/site";
+import { site, contactLink } from "@/config/site";
 
 const packOptions = ["Dry Fruit & Seed Mix", "Fruit & Berries Mix", "Both", "A gift pack", "Haven’t tried it yet"];
 

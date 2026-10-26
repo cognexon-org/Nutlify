@@ -1,5 +1,7 @@
-import giftCream from "../assets/giftbox-cream.webp";
-import giftMarigold from "../assets/giftbox-marigold.webp";
+"use client";
+
+const giftCream = "/assets/giftbox-cream.webp";
+const giftMarigold = "/assets/giftbox-marigold.webp";
 
 /* The two-jar gift box, matched to the site theme. */
 export default function GiftBoxPhoto({ className = "" }) {

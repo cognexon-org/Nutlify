@@ -1,7 +1,17 @@
+"use client";
+
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
 import Ornament from "./Ornament";
 import VegMark from "./VegMark";
-import { site, contactLink, contactLabel } from "../config/site";
+import { site, whatsappDisplay } from "@/config/site";
+
+const policyLinks = [
+  { href: "/policies/shipping", label: "Shipping & delivery" },
+  { href: "/policies/refunds", label: "Cancellations & refunds" },
+  { href: "/policies/terms", label: "Terms & conditions" },
+  { href: "/policies/privacy", label: "Privacy policy" },
+  { href: "/policies/contact", label: "Contact us" },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -15,13 +25,8 @@ export default function Footer() {
         </div>
         <NuvanaLogo onDark className="h-auto w-56" />
         <p className="mt-3 font-sans text-sm font-medium uppercase tracking-[0.08em] text-[#DEB870]">{site.descriptor}</p>
-        <a
-          href={contactLink("Hi Nutlify, I’d like to order NUVANA.")}
-          target="_blank"
-          rel="noreferrer"
-          className="btn mt-10 bg-[#DEB870] text-[#0F3327] hover:bg-[#E8C886]"
-        >
-          {contactLabel()}
+        <a href="/#packs" className="btn mt-10 bg-[#DEB870] text-[#0F3327] hover:bg-[#E8C886]">
+          Shop NUVANA
         </a>
       </div>
 
@@ -32,8 +37,25 @@ export default function Footer() {
             <p className="mt-2">
               <a href={`mailto:${site.email}`} className="hover:text-cream">{site.email}</a>
             </p>
+            {site.whatsapp && (
+              <p>
+                <a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noreferrer" className="hover:text-cream">
+                  WhatsApp {whatsappDisplay()}
+                </a>
+              </p>
+            )}
             <p>{site.location}</p>
           </div>
+          <nav aria-label="Policies">
+            <p className="text-cream">Policies</p>
+            <ul className="mt-2 space-y-1">
+              {policyLinks.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="hover:text-cream">{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <div className="sm:text-right">
             <p>© {year} Nutlify. NUVANA is a product of Nutlify.</p>
             {site.fssai && <p className="mt-1">FSSAI Lic. No. {site.fssai}</p>}

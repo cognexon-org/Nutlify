@@ -1,16 +1,20 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NutlifyLogo } from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import CartButton from "./cart/CartButton";
+import AccountButton from "./auth/AccountButton";
 
 const links = [
-  { href: "#inside", label: "What’s inside" },
-  { href: "#packs", label: "Packs" },
-  { href: "#gifting", label: "Gifting" },
-  { href: "#made", label: "How it’s made" },
-  { href: "#next", label: "Coming next" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#inside", label: "What’s inside" },
+  { href: "/#packs", label: "Packs" },
+  { href: "/#gifting", label: "Gifting" },
+  { href: "/#made", label: "How it’s made" },
+  { href: "/#next", label: "Coming next" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Header() {
@@ -36,7 +40,7 @@ export default function Header() {
       style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
     >
       <div className="header-pad mx-auto flex h-16 w-full max-w-6xl items-center justify-between sm:h-20">
-        <a href="#top" className="shrink-0" aria-label="Nutlify home">
+        <a href="/" className="shrink-0" aria-label="Nutlify home">
           <NutlifyLogo className="h-8 w-auto sm:h-9" />
         </a>
 
@@ -50,7 +54,9 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a href="#packs" className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
+          <AccountButton />
+          <CartButton />
+          <a href="/#packs" className="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
             Shop NUVANA
           </a>
           <button
@@ -90,7 +96,7 @@ export default function Header() {
                 </li>
               ))}
               <li className="pt-6">
-                <a href="#packs" onClick={() => setOpen(false)} className="btn-primary w-full">
+                <a href="/#packs" onClick={() => setOpen(false)} className="btn-primary w-full">
                   Shop NUVANA
                 </a>
               </li>

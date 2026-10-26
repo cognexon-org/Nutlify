@@ -1,3 +1,5 @@
+"use client";
+
 /** The gold rule-and-diamond divider from the packaging. */
 export default function Ornament({ className = "w-48", hole = "rgb(var(--bg))" }) {
   return (

@@ -1,8 +1,10 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import videoMp4 from "../assets/video/moments-1.mp4";
-import videoWebm from "../assets/video/moments.webm";
-import poster from "../assets/video/moments-poster.webp";
+const videoMp4 = "/assets/video/moments.mp4";
+const videoWebm = "/assets/video/moments.webm";
+const poster = "/assets/video/moments-poster.webp";
 
 /*
  * Plays muted while on screen and pauses when scrolled away.
@@ -13,9 +15,11 @@ export default function MomentsVideo() {
   const userPaused = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
-  const [reduced] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  // Read after mounting so server and browser render the same HTML first.
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;

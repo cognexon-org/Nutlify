@@ -1,4 +1,4 @@
-import { site } from "../config/site";
+import { site } from "@/config/site";
 
 export const faq = [
   {
@@ -19,17 +19,18 @@ export const faq = [
   },
   {
     q: "How do I order?",
-    a: site.whatsapp
-      ? "Tap any order button and send us the prefilled WhatsApp message. We’ll confirm availability, price and delivery."
-      : `Tap any order button to email us at ${site.email}. We’ll confirm availability, price and delivery.`,
+    a: `Add what you’d like to your cart and pay securely online with UPI, cards, net banking or wallets. For bulk or gifting orders, ${
+      site.whatsapp ? "message us on WhatsApp" : `email us at ${site.email}`
+    } and we’ll confirm price and delivery.`,
   },
   {
     q: "Where do you deliver, and how do I pay?",
     a: [
       site.ordering.deliveryAreas
         ? `We currently deliver to ${site.ordering.deliveryAreas}.`
-        : "We’re starting with local deliveries. Message us your city and pincode and we’ll confirm whether we can reach you.",
-      site.ordering.payment ? `You can pay by ${site.ordering.payment}.` : "We’ll share payment options when we confirm your order.",
+        : "We deliver across India; the checkout tells you if your pincode isn’t covered yet.",
+      `Delivery is free in ${site.shipping.local.label}, ₹${site.shipping.state.fee} in the rest of ${site.shipping.state.label} and ₹${site.shipping.rest.fee} elsewhere in India.`,
+      "You pay online at checkout through Razorpay: UPI, cards, net banking or wallets.",
     ].join(" "),
   },
   {

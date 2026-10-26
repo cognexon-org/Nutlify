@@ -1,4 +1,6 @@
-import nutColumn from "../assets/nut-column.webp";
+"use client";
+
+const nutColumn = "/assets/nut-column.webp";
 
 /**
  * The framed column of mixed nuts from the NUVANA box dieline:

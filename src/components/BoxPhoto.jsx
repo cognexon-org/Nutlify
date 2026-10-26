@@ -1,5 +1,7 @@
-import boxCream from "../assets/box-cream1.png";
-import boxMarigold from "../assets/box-marigold1.png";
+"use client";
+
+const boxCream = "/assets/box-cream-gift.webp";
+const boxMarigold = "/assets/box-marigold-gift.webp";
 
 /*
  * The 300 g box, shown with the packaging that matches the site theme.

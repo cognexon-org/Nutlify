@@ -1,13 +1,13 @@
-import almonds from "../assets/illustrations/almonds.webp";
-import cashews from "../assets/illustrations/cashews.webp";
-import nuts from "../assets/illustrations/walnuts.webp";
-import raisins from "../assets/illustrations/raisins-mix.webp";
-import seeds from "../assets/illustrations/seeds.webp";
-import kiwi from "../assets/illustrations/kiwi.webp";
-import berriesImg from "../assets/illustrations/berries.webp";
-import mango from "../assets/illustrations/mango.webp";
-import cherry from "../assets/illustrations/cherry.webp";
-import berriesBowl from "../assets/illustrations/berries-bowl-mix.webp";
+const almonds = "/assets/illustrations/almonds.webp";
+const cashews = "/assets/illustrations/cashews.webp";
+const nuts = "/assets/illustrations/walnuts.webp";
+const raisins = "/assets/illustrations/raisins-mix.webp";
+const seeds = "/assets/illustrations/seeds.webp";
+const kiwi = "/assets/illustrations/kiwi.webp";
+const berriesImg = "/assets/illustrations/berries.webp";
+const mango = "/assets/illustrations/mango.webp";
+const cherry = "/assets/illustrations/cherry.webp";
+const berriesBowl = "/assets/illustrations/berries-bowl-mix.webp";
 
 /*
  * The two NUVANA mixes, worded as on the final pouches.

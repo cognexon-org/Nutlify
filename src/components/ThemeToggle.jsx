@@ -1,16 +1,24 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 /** Switches between the Cream and Forest themes — the two packaging themes. */
 export default function ThemeToggle({ className = "" }) {
-  const [forest, setForest] = useState(() =>
-    typeof document !== "undefined" && document.documentElement.classList.contains("dark")
-  );
+  // Starts as null so the server and the first browser render match (avoids a hydration error);
+  // the real theme (already applied by the script in layout.jsx) is read right after mounting.
+  const [state, setForest] = useState(null);
+  const forest = state === true;
 
   useEffect(() => {
+    setForest(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  useEffect(() => {
+    if (state === null) return;
     document.documentElement.classList.toggle("dark", forest);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", forest ? "#0C281E" : "#FCF0DC");
-  }, [forest]);
+  }, [state, forest]);
 
   const toggle = () => {
     const next = !forest;

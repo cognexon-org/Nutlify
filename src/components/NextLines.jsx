@@ -1,5 +1,7 @@
+"use client";
+
 import { NuvanaLogo } from "./Logo";
-import { contactLink } from "../config/site";
+import { contactLink } from "@/config/site";
 
 /*
  * Future concepts from the portfolio board, described by occasion only.

@@ -1,4 +1,6 @@
-import sprig from "../assets/gold-sprig1.webp";
+"use client";
+
+const sprig = "/assets/gold-sprig1.webp";
 import MomentsVideo from "./MomentsVideo";
 
 const moments = [

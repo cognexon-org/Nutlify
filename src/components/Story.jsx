@@ -1,5 +1,7 @@
+"use client";
+
 import Ornament from "./Ornament";
-import { site } from "../config/site";
+import { site } from "@/config/site";
 
 export default function Story() {
   const { heading, paragraphs, signature } = site.story;

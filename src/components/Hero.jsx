@@ -1,11 +1,13 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import NutColumn from "./NutColumn";
 import Ornament from "./Ornament";
 import { NutlifyLogo, NuvanaLogo } from "./Logo";
-import sprig from "../assets/gold-sprig1.webp";
-import { site } from "../config/site";
-import { mixes } from "../data/mixes";
+const sprig = "/assets/gold-sprig1.webp";
+import { site } from "@/config/site";
+import { mixes } from "@/data/mixes";
 
 const ease = [0.22, 1, 0.36, 1];
 
