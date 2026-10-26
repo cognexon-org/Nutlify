@@ -39,7 +39,7 @@ export default async function ProductsPage({ searchParams }) {
                   </div>
                 </td>
                 <td className="px-5 py-3 capitalize text-muted">{p.category === "gift" ? "Gifting" : "Packs"}</td>
-                <td className="px-5 py-3 text-right text-ink">{money(p.price)}</td>
+                <td className="px-5 py-3 text-right text-ink">{p.mrp && p.mrp > p.price ? <span className="block text-xs text-muted line-through">{money(p.mrp)}</span> : null}{money(p.price)}{p.pairPrice ? <span className="block text-xs text-muted">2 for {money(p.pairPrice)}</span> : null}</td>
                 <td className={`px-5 py-3 text-right ${p.stock === 0 ? "text-[#B4532A]" : "text-ink"}`}>{p.stock}</td>
                 <td className="px-5 py-3 text-muted">{p.active ? (p.purchasable ? "Yes" : "Enquiry only") : "Hidden"}</td>
                 <td className="px-5 py-3 text-right"><Link href={`/admin/products/${p._id}`} className="text-gold hover:underline">Edit</Link></td>

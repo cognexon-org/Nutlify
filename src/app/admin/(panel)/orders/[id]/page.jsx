@@ -34,7 +34,7 @@ export default async function OrderDetail({ params }) {
                 {o.items.map((i) => (
                   <tr key={i.slug}>
                     <td className="py-2.5 text-ink">{i.name}<span className="text-muted">, {i.variant}</span></td>
-                    <td className="py-2.5 text-muted">{i.qty} × {money(i.price)}</td>
+                    <td className="py-2.5 text-muted">{i.qty} × {money(i.price)}{i.pairPrice && i.qty >= 2 ? ` (2 for ${money(i.pairPrice)})` : ""}</td>
                     <td className="py-2.5 text-right text-ink">{money(i.lineTotal)}</td>
                   </tr>
                 ))}

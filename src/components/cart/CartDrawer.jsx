@@ -5,10 +5,10 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Minus, Plus, Trash2, X } from "lucide-react";
 import { useCart } from "./CartProvider";
-import { inr, deliveryRatesText } from "@/lib/pricing";
+import { inr, deliveryRatesText, lineTotal } from "@/lib/pricing";
 
 export default function CartDrawer() {
-  const { lines, open, setOpen, setQty, remove, subtotal, shippingKnown, shippingNote, count } = useCart();
+  const { lines, open, setOpen, setQty, remove, subtotal, savings, shippingKnown, shippingNote, count } = useCart();
 
   useEffect(() => {
     if (!open) return;
@@ -72,7 +72,11 @@ export default function CartDrawer() {
                             <p className="font-medium leading-tight">{l.name}</p>
                             <p className="text-sm text-muted">{l.variant}</p>
                           </div>
-                          <p className="font-serif text-lg">{inr(l.price * l.qty)}</p>
+                          <div className="text-right">
+                            <p className="font-serif text-lg">{inr(lineTotal(l.price, l.pairPrice, l.qty))}</p>
+                            {l.pairPrice && l.qty >= 2 && <p className="text-xs text-brand">2 for {inr(l.pairPrice)} applied</p>}
+                            {l.pairPrice && l.qty === 1 && <p className="text-xs text-muted">Add 1 more: 2 for {inr(l.pairPrice)}</p>}
+                          </div>
                         </div>
                         <div className="mt-auto flex items-center justify-between pt-3">
                           <div className="inline-flex items-center rounded-full border border-line">
@@ -102,6 +106,7 @@ export default function CartDrawer() {
                 <div className="border-t border-line px-6 py-5">
                   <dl className="space-y-1.5 text-sm">
                     <div className="flex justify-between"><dt className="text-muted">Subtotal</dt><dd>{inr(subtotal)}</dd></div>
+                    {savings > 0 && <div className="flex justify-between text-brand"><dt>You save on MRP</dt><dd>{inr(savings)}</dd></div>}
                     <div className="flex justify-between gap-4">
                       <dt className="text-muted">Delivery</dt>
                       <dd className="text-right">{shippingKnown ? <span className="text-brand">Free</span> : "Calculated at checkout"}</dd>
@@ -110,7 +115,7 @@ export default function CartDrawer() {
                     <div className="flex justify-between pt-2 font-serif text-xl"><dt>{shippingKnown ? "Total" : "Total before delivery"}</dt><dd>{inr(subtotal)}</dd></div>
                   </dl>
                   <p className="mt-1 text-xs text-muted">
-                    Prices are MRP, inclusive of all taxes. {!shippingKnown && <>Delivery: {deliveryRatesText()}. </>}Have a coupon? Apply it at checkout.
+                    Prices include all taxes. {!shippingKnown && <>Delivery: {deliveryRatesText()}. </>}Have a coupon? Apply it at checkout.
                   </p>
                   <Link href="/checkout" onClick={() => setOpen(false)} className="btn-primary mt-5 w-full">
                     Checkout

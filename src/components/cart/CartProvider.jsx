@@ -38,10 +38,10 @@ export function CartProvider({ children }) {
       setLines((prev) => {
         const limit = Math.min(max, product.stock ?? max);
         const found = prev.find((l) => l.slug === product.slug);
-        if (found) return prev.map((l) => (l.slug === product.slug ? { ...l, qty: Math.min(limit, l.qty + qty), price: product.price } : l));
+        if (found) return prev.map((l) => (l.slug === product.slug ? { ...l, qty: Math.min(limit, l.qty + qty), price: product.price, mrp: product.mrp ?? null, pairPrice: product.pairPrice ?? null } : l));
         return [
           ...prev,
-          { slug: product.slug, name: product.name, variant: product.variant, price: product.price, image: product.image, stock: product.stock, qty: Math.min(limit, qty) },
+          { slug: product.slug, name: product.name, variant: product.variant, price: product.price, mrp: product.mrp ?? null, pairPrice: product.pairPrice ?? null, image: product.image, stock: product.stock, qty: Math.min(limit, qty) },
         ];
       });
       setOpen(true);

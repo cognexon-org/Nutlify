@@ -40,6 +40,16 @@ export async function saveProduct(formData) {
     mix: ["dryfruit", "berries", "both"].includes(str(formData, "mix", 10)) ? str(formData, "mix", 10) : "dryfruit",
     description: str(formData, "description", 1000),
     price: Math.max(0, Math.round(Number(formData.get("price")) || 0)),
+    mrp: (() => {
+      const v = String(formData.get("mrp") ?? "").trim();
+      const n = Math.round(Number(v));
+      return v && Number.isFinite(n) && n > 0 ? n : null;
+    })(),
+    pairPrice: (() => {
+      const v = String(formData.get("pairPrice") ?? "").trim();
+      const n = Math.round(Number(v));
+      return v && Number.isFinite(n) && n > 0 ? n : null;
+    })(),
     stock: Math.max(0, Math.floor(Number(formData.get("stock")) || 0)),
     image: str(formData, "image", 300),
     sort: Math.floor(Number(formData.get("sort")) || 0),

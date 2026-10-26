@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import BoxPhoto from "./BoxPhoto";
 import VegMark from "./VegMark";
 import AddToCart from "./cart/AddToCart";
+import PriceTag from "./PriceTag";
 import { mixes } from "@/data/mixes";
 import { site } from "@/config/site";
 import { inr } from "@/lib/pricing";
@@ -25,13 +26,13 @@ export default function Packs({ products = [] }) {
     <section id="packs" className="section border-t border-line/70 bg-surface/50">
       <div className="container-x">
         <div className="max-w-2xl">
-          <h2 className="text-4xl text-ink sm:text-5xl">Two mixes, three ways to buy</h2>
+          <h2 className="text-4xl text-ink sm:text-5xl">Two mixes, one pouch each</h2>
           <p className="mt-5 max-w-prose text-muted">
-            Pick a pouch to try each mix, or the 300 g box of the Dry Fruit & Seed Mix for the house.
+            Pick the mix you like, or try both. For presents, see the gift bag and the gift box below.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-16 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-12">
+        <div className={`mt-16 grid gap-16 md:grid-cols-2 md:gap-10 lg:gap-12 ${packs.length > 2 ? "lg:grid-cols-3" : "lg:mx-auto lg:max-w-4xl"}`}>
           {packs.map((p) => {
             const mix = mixes.find((m) => m.id === p.mix);
             return (
@@ -49,10 +50,7 @@ export default function Packs({ products = [] }) {
                   <p className="descriptor text-xs">{p.name}</p>
                   <div className="mt-2 flex items-baseline justify-between gap-4">
                     <h3 className="text-3xl text-ink">{p.variant}</h3>
-                    <p className="shrink-0 text-right">
-                      <span className="block font-serif text-2xl text-gold">{inr(p.price)}</span>
-                      <span className="block text-xs text-muted">MRP, incl. of all taxes</span>
-                    </p>
+                    <PriceTag product={p} />
                   </div>
                   <p className="mt-3 max-w-prose text-muted">{p.description}</p>
                   <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted">

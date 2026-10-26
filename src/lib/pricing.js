@@ -37,16 +37,29 @@ export function delivery(lines, { address, freeShipping = false } = {}) {
 }
 
 /**
- * lines: [{ slug, price, qty }] in rupees; discount in rupees.
+ * Price of `qty` units. With a pair price, every 2 units cost `pairPrice` and any odd one costs `price`
+ * (e.g. 249 / 449: 1 = 249, 2 = 449, 3 = 698, 4 = 898).
+ */
+export function lineTotal(price, pairPrice, qty) {
+  const q = Math.max(0, Math.floor(qty));
+  if (pairPrice != null && pairPrice > 0 && pairPrice < price * 2) return Math.floor(q / 2) * pairPrice + (q % 2) * price;
+  return price * q;
+}
+
+/**
+ * lines: [{ slug, price, pairPrice, qty }] in rupees; discount in rupees.
  * opts: { address: { pincode, state }, freeShipping }.
  * `total` leaves delivery out while it isn't known yet.
  */
 export function totals(lines, discount = 0, opts = {}) {
-  const subtotal = lines.reduce((sum, l) => sum + l.price * l.qty, 0);
+  const subtotal = lines.reduce((sum, l) => sum + lineTotal(l.price, l.pairPrice, l.qty), 0);
   const d = Math.max(0, Math.min(discount, subtotal));
+  // How much less than MRP the customer pays (single discounts and pair prices together).
+  const mrpTotal = lines.reduce((sum, l) => sum + (l.mrp && l.mrp > l.price ? l.mrp : l.price) * l.qty, 0);
+  const savings = Math.max(0, mrpTotal - subtotal);
   const del = delivery(lines, opts);
   const shipping = del.fee ?? 0;
-  return { subtotal, discount: d, shipping, shippingKnown: del.known, shippingNote: del.note, zone: del.zone, total: subtotal - d + shipping };
+  return { subtotal, savings, discount: d, shipping, shippingKnown: del.known, shippingNote: del.note, zone: del.zone, total: subtotal - d + shipping };
 }
 
 /** Short text for the cart, e.g. "Free in Kanpur · ₹60 in Uttar Pradesh · ₹100 elsewhere". */

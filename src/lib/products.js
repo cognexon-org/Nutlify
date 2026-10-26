@@ -12,6 +12,8 @@ const plain = (p) => ({
   mix: p.mix,
   description: p.description,
   price: p.price,
+  mrp: p.mrp ?? null,
+  pairPrice: p.pairPrice ?? null,
   stock: p.stock,
   purchasable: p.purchasable,
   image: p.image,

@@ -20,7 +20,7 @@ function F({ label, hint, children }) {
 export default async function EditProduct({ params }) {
   const { id } = await params;
   const isNew = id === "new";
-  let p = { name: "", variant: "", slug: "", category: "pack", mix: "dryfruit", description: "", price: 0, stock: 0, image: "", sort: 10, active: true, purchasable: true };
+  let p = { name: "", variant: "", slug: "", category: "pack", mix: "dryfruit", description: "", price: 0, mrp: null, pairPrice: null, stock: 0, image: "", sort: 10, active: true, purchasable: true };
   if (!isNew) {
     if (!mongoose.isValidObjectId(id)) notFound();
     await connectDB();
@@ -38,7 +38,13 @@ export default async function EditProduct({ params }) {
         <input type="hidden" name="id" value={isNew ? "new" : String(p._id)} />
         <F label="Name"><input name="name" required defaultValue={p.name} className={input} placeholder="Dry Fruit & Seed Mix" /></F>
         <F label="Variant"><input name="variant" required defaultValue={p.variant} className={input} placeholder="70 g pouch" /></F>
-        <F label="Price (₹, MRP incl. taxes)"><input name="price" type="number" min="0" step="1" required defaultValue={p.price} className={input} /></F>
+        <F label="Selling price for 1 (₹, incl. taxes)"><input name="price" type="number" min="0" step="1" required defaultValue={p.price} className={input} /></F>
+        <F label="MRP (₹, optional)" hint="Printed MRP. If higher than the selling price, the site shows it struck through with the saving.">
+          <input name="mrp" type="number" min="0" step="1" defaultValue={p.mrp ?? ""} className={input} />
+        </F>
+        <F label="Price for 2 (₹, optional)" hint="e.g. 449 when one is 249. Leave empty for no pair price.">
+          <input name="pairPrice" type="number" min="0" step="1" defaultValue={p.pairPrice ?? ""} className={input} />
+        </F>
         <F label="Stock" hint="Goes down automatically when an order is paid."><input name="stock" type="number" min="0" step="1" required defaultValue={p.stock} className={input} /></F>
         <F label="Section">
           <select name="category" defaultValue={p.category} className={input}>

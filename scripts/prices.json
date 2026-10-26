@@ -1,0 +1,7 @@
+{
+  "dryfruit-70g-pouch": { "mrp": 120, "price": 100, "pairPrice": null },
+  "berries-80g-pouch": { "mrp": 120, "price": 110, "pairPrice": null },
+  "diwali-gift-bag": { "mrp": 299, "price": 249, "pairPrice": 449 },
+  "gift-box-two-jars": { "mrp": 699, "price": 549, "pairPrice": 999 },
+  "dryfruit-300g-box": { "active": false }
+}

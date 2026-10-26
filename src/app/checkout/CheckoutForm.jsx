@@ -7,7 +7,7 @@ import { Lock, Tag, X } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { useCustomer } from "@/components/auth/CustomerProvider";
 import GoogleButton from "@/components/auth/GoogleButton";
-import { inr, totals } from "@/lib/pricing";
+import { inr, totals, lineTotal } from "@/lib/pricing";
 
 const STATES = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh",
@@ -79,7 +79,7 @@ export default function CheckoutForm() {
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
-  const { subtotal, discount, shipping, shippingKnown, shippingNote, total } = totals(lines, coupon?.discount || 0, {
+  const { subtotal, savings, discount, shipping, shippingKnown, shippingNote, total } = totals(lines, coupon?.discount || 0, {
     address: { pincode: form.pincode, state: form.state },
     freeShipping: !!coupon?.freeShipping,
   });
@@ -250,7 +250,7 @@ export default function CheckoutForm() {
                   {l.variant} × {l.qty}
                 </p>
               </div>
-              <p className="font-serif text-lg text-ink">{inr(l.price * l.qty)}</p>
+              <p className="font-serif text-lg text-ink">{inr(lineTotal(l.price, l.pairPrice, l.qty))}</p>
             </li>
           ))}
         </ul>
@@ -297,6 +297,7 @@ export default function CheckoutForm() {
 
         <dl className="mt-4 space-y-1.5 border-t border-line pt-4 text-sm">
           <div className="flex justify-between"><dt className="text-muted">Subtotal</dt><dd>{inr(subtotal)}</dd></div>
+          {savings > 0 && <div className="flex justify-between text-brand"><dt>You save on MRP</dt><dd>{inr(savings)}</dd></div>}
           {discount > 0 && (
             <div className="flex justify-between text-brand"><dt>Discount ({coupon.code})</dt><dd>−{inr(discount)}</dd></div>
           )}
@@ -306,7 +307,7 @@ export default function CheckoutForm() {
           </div>
           <div className="flex justify-between pt-2 font-serif text-2xl text-ink"><dt>Total</dt><dd>{inr(total)}</dd></div>
         </dl>
-        <p className="mt-1 text-xs text-muted">MRP, inclusive of all taxes. The final amount is confirmed when you pay.</p>
+        <p className="mt-1 text-xs text-muted">Inclusive of all taxes. The final amount is confirmed when you pay.</p>
 
         {message && (
           <p role="status" className="mt-5 rounded-lg bg-bg px-4 py-3 text-sm text-ink">

@@ -2,6 +2,7 @@
 
 import GiftBoxPhoto from "./GiftBoxPhoto";
 import AddToCart from "./cart/AddToCart";
+import PriceTag from "./PriceTag";
 import { site, contactLink } from "@/config/site";
 import { inr } from "@/lib/pricing";
 
@@ -59,10 +60,7 @@ export default function Gifting({ products = [] }) {
               {(art[p.slug] || fallbackArt)(p)}
               <div className="mt-7 flex items-baseline justify-between gap-4">
                 <h3 className="text-3xl text-ink">{p.name}</h3>
-                <p className="shrink-0 text-right">
-                  <span className="block font-serif text-2xl text-gold">{p.purchasable ? inr(p.price) : "Price on request"}</span>
-                  {p.purchasable && <span className="block text-xs text-muted">MRP, incl. of all taxes</span>}
-                </p>
+                <PriceTag product={p} />
               </div>
               <p className="mt-3 max-w-prose text-muted">{p.description}</p>
               {(site.shipping?.offers || [])

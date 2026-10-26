@@ -1,6 +1,7 @@
 import "server-only";
 import Product from "@/lib/models/Product";
 import { site } from "@/config/site";
+import { lineTotal } from "@/lib/pricing";
 
 export class CartError extends Error {
   constructor(message, status = 409) {
@@ -34,7 +35,7 @@ export async function priceCart(rawItems) {
     if (!p) throw new CartError("Some items in your cart are no longer available. Please review your cart.");
     if (p.stock < qty)
       throw new CartError(p.stock > 0 ? `Only ${p.stock} left of ${p.name} (${p.variant}).` : `${p.name} (${p.variant}) is out of stock.`);
-    items.push({ product: p._id, slug, name: p.name, variant: p.variant, price: p.price, qty, lineTotal: p.price * qty, image: p.image });
+    items.push({ product: p._id, slug, name: p.name, variant: p.variant, price: p.price, mrp: p.mrp ?? null, pairPrice: p.pairPrice ?? null, qty, lineTotal: lineTotal(p.price, p.pairPrice, qty), image: p.image });
   }
   const subtotal = items.reduce((s, i) => s + i.lineTotal, 0);
   return { items, subtotal };

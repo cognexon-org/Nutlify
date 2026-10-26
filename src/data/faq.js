@@ -11,7 +11,7 @@ export const faq = [
   },
   {
     q: "Which pack should I pick?",
-    a: "The pouches (70 g Dry Fruit & Seed, 80 g Fruit & Berries) are easy to carry and a good way to try each mix. The 300 g box of the Dry Fruit & Seed Mix suits home and sharing. For gifts, see the Diwali gift bag and the two-jar gift box.",
+    a: "The pouches (70 g Dry Fruit & Seed, 80 g Fruit & Berries) are easy to carry and a good way to try each mix. For gifts, see the Diwali gift bag and the two-jar gift box.",
   },
   {
     q: "How should I store it?",
@@ -35,6 +35,6 @@ export const faq = [
   },
   {
     q: "Can I order NUVANA as a gift?",
-    a: "Yes. Choose the Diwali gift bag (both pouches and a card) or the gift box with two jars, or give the 300 g box. For bulk orders, message us with the quantity, date and delivery city.",
+    a: "Yes. Choose the Diwali gift bag (both pouches and a card) or the gift box with two jars (one of each mix). For bulk orders, message us with the quantity, date and delivery city.",
   },
 ];

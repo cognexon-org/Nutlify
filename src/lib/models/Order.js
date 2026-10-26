@@ -8,7 +8,9 @@ const ItemSchema = new mongoose.Schema(
     slug: String,
     name: String,
     variant: String,
-    price: Number, // rupees at time of order
+    price: Number, // rupees for 1 at time of order
+    mrp: Number, // MRP at time of order (if set)
+    pairPrice: Number, // rupees for 2 at time of order (if any)
     qty: Number,
     lineTotal: Number,
     image: String,

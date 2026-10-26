@@ -24,6 +24,8 @@ const Product =
         mix: String,
         description: String,
         price: Number,
+        mrp: Number,
+        pairPrice: Number,
         stock: Number,
         active: Boolean,
         purchasable: Boolean,
