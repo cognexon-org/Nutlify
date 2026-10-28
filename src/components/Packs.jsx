@@ -42,14 +42,16 @@ export default function Packs({ products = [] }) {
                   whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 >
-                  {art[p.slug] ? art[p.slug]() : pouch(p.image, `NUVANA ${p.name}, ${p.variant}`)}
+                  <a href={`/products/${p.slug}`} aria-label={`NUVANA ${p.name}, ${p.variant}: details`} className="flex w-full justify-center">
+                    {art[p.slug] ? art[p.slug]() : pouch(p.image, `NUVANA ${p.name}, ${p.variant}`)}
+                  </a>
                 </motion.div>
                 <div className="mx-auto mt-4 h-px w-3/4 bg-gradient-to-r from-transparent via-line to-transparent" />
 
                 <div className="mt-8 flex flex-1 flex-col">
                   <p className="descriptor text-xs">{p.name}</p>
                   <div className="mt-2 flex items-baseline justify-between gap-4">
-                    <h3 className="text-3xl text-ink">{p.variant}</h3>
+                    <h3 className="text-3xl text-ink"><a href={`/products/${p.slug}`} className="hover:underline">{p.variant}</a></h3>
                     <PriceTag product={p} />
                   </div>
                   <p className="mt-3 max-w-prose text-muted">{p.description}</p>

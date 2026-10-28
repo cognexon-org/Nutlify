@@ -57,9 +57,11 @@ export default function Gifting({ products = [] }) {
         <div className="mt-14 grid gap-14 md:grid-cols-2 md:gap-10 lg:gap-16">
           {gifts.map((p) => (
             <article key={p.slug} className="flex flex-col">
-              {(art[p.slug] || fallbackArt)(p)}
+              <a href={`/products/${p.slug}`} aria-label={`NUVANA ${p.name}: details`} className="block">
+                {(art[p.slug] || fallbackArt)(p)}
+              </a>
               <div className="mt-7 flex items-baseline justify-between gap-4">
-                <h3 className="text-3xl text-ink">{p.name}</h3>
+                <h3 className="text-3xl text-ink"><a href={`/products/${p.slug}`} className="hover:underline">{p.name}</a></h3>
                 <PriceTag product={p} />
               </div>
               <p className="mt-3 max-w-prose text-muted">{p.description}</p>

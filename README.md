@@ -103,3 +103,15 @@ Vercel is the simplest host for Next.js:
 - Order confirmation emails or WhatsApp messages to customers and to you.
 - Image upload from the admin panel (images are added to `public/assets` for now).
 - GST invoices, courier API integration (e.g. Shiprocket), order emails.
+
+## SEO
+Built in: page titles and descriptions for every page, keywords (`src/config/seo.js`), canonical URLs, Open Graph/Twitter previews,
+`/robots.txt`, `/sitemap.xml`, a web manifest, product pages at `/products/<slug>` with their own titles and descriptions
+(`src/data/productContent.js`), and structured data for Google (store, website, products with price and stock, FAQ, breadcrumbs).
+
+After each deploy to nutlify.in:
+1. **Google Search Console** (search.google.com/search-console): add the property `https://nutlify.in`, verify with the HTML tag
+   (put the code in `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel and redeploy), then **Sitemaps > add `sitemap.xml`**.
+2. **Bing Webmaster Tools**: import from Search Console, or verify with `NEXT_PUBLIC_BING_SITE_VERIFICATION`.
+3. **Google Business Profile** for Nutlify in Kanpur: the biggest single boost for searches like “dry fruits in Kanpur”.
+4. Check structured data at search.google.com/test/rich-results with a product page URL.

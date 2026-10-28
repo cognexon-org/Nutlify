@@ -19,6 +19,12 @@ const plain = (p) => ({
   image: p.image,
 });
 
+/** One active product by slug (falls back to the seed list if the database can't be reached), or null. */
+export async function getStoreProduct(slug) {
+  const { products } = await getStoreProducts();
+  return products.find((p) => p.slug === slug) || null;
+}
+
 /**
  * Active products for the storefront. If the database can't be reached (e.g. local
  * development before .env.local is set up), falls back to the seed list so the site still renders.

@@ -34,7 +34,15 @@ export const faq = [
     ].join(" "),
   },
   {
-    q: "Can I order NUVANA as a gift?",
-    a: "Yes. Choose the Diwali gift bag (both pouches and a card) or the gift box with two jars (one of each mix). For bulk orders, message us with the quantity, date and delivery city.",
+    q: "Do you deliver dry fruits in Kanpur?",
+    a: `Yes. NUVANA is made in ${site.shipping.local.label}, and delivery is free to every ${site.shipping.local.label} pincode starting with ${site.shipping.local.pincodePrefixes.join(", ")}. We also deliver across ${site.shipping.state.label} and the rest of India.`,
+  },
+  {
+    q: "Do you have Diwali gift hampers and dry fruit gift boxes?",
+    a: "Yes. The Diwali gift hamper has one Dry Fruit & Seed Mix pouch, one Fruit & Berries Mix pouch and a Happy Diwali card in a carry bag. The premium gift box has one jar of each mix in a rigid box with a magnetic lid. Both can be ordered online, and you can buy two for a lower price.",
+  },
+  {
+    q: "Can I order corporate or bulk Diwali gifts?",
+    a: `Yes. For corporate gifting, wedding return gifts or other bulk orders, ${site.whatsapp ? "message us on WhatsApp" : `email us at ${site.email}`} with the quantity, date and delivery city, and we’ll confirm the price and delivery date.`,
   },
 ];

@@ -13,7 +13,7 @@ export const site = {
   // WhatsApp number in international format, digits only, e.g. "919812345678".
   // Leave empty to hide WhatsApp buttons (orders then fall back to email).
   // WhatsApp for enquiries (digits only, with country code). Leave empty to fall back to email.
-  whatsapp: "917860274086",
+  whatsapp: "919026303246",
   email: "nutlify@gmail.com",
   website: "nutlify.in",
   location: "Downtown Kanpur, Uttar Pradesh",
@@ -78,7 +78,7 @@ export function contactLink(message) {
 
 export const contactLabel = () => (site.whatsapp ? "Enquire on WhatsApp" : "Enquire by email");
 
-/** "917860274086" -> "+91 78602 74086" */
+/** "919026303246" -> "+91 90263 03246" */
 export const whatsappDisplay = () => {
   const d = site.whatsapp || "";
   return d.length === 12 && d.startsWith("91") ? `+91 ${d.slice(2, 7)} ${d.slice(7)}` : d ? `+${d}` : "";

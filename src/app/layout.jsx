@@ -11,23 +11,37 @@ import "./globals.css";
 import { CartProvider } from "@/components/cart/CartProvider";
 import CartDrawer from "@/components/cart/CartDrawer";
 import { CustomerProvider } from "@/components/auth/CustomerProvider";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+import { seo, SITE_URL } from "@/config/seo";
 
 export const metadata = {
-  metadataBase: new URL(siteUrl),
-  title: { default: "NUVANA by Nutlify | Dry Fruit & Seed Mix, Fruit & Berries Mix", template: "%s | Nutlify" },
-  description:
-    "NUVANA by Nutlify: a Dry Fruit & Seed Mix and a Fruit & Berries Mix, in pouches, boxes and Diwali gift packs. Nourish Naturally. Thrive Daily.",
-  icons: { icon: "/favicon.svg" },
+  metadataBase: new URL(SITE_URL),
+  title: { default: seo.defaultTitle, template: seo.titleTemplate },
+  description: seo.description,
+  keywords: seo.keywords,
+  applicationName: `${seo.product} by ${seo.brand}`,
+  authors: [{ name: seo.brand, url: SITE_URL }],
+  creator: seo.brand,
+  publisher: seo.brand,
+  category: "food",
+  alternates: { canonical: "/" },
+  icons: { icon: "/favicon.svg", apple: "/favicon.svg" },
   openGraph: {
     type: "website",
-    siteName: "Nutlify",
-    title: "NUVANA by Nutlify | Dry Fruit & Seed Mix, Fruit & Berries Mix",
-    description: "A Dry Fruit & Seed Mix and a Fruit & Berries Mix for everyday enjoyment. Nourish Naturally. Thrive Daily.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    locale: seo.locale,
+    url: "/",
+    siteName: `${seo.product} by ${seo.brand}`,
+    title: seo.defaultTitle,
+    description: seo.description,
+    images: [{ url: seo.ogImage, width: 1200, height: 630, alt: "NUVANA Premium Dry Fruit & Seed Mix by Nutlify" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", title: seo.defaultTitle, description: seo.description, images: [seo.ogImage] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  // Paste the codes from Google Search Console / Bing Webmaster Tools into these env variables.
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ? { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } } : {}),
+  },
+  formatDetection: { telephone: false },
 };
 
 export const viewport = {
@@ -42,7 +56,7 @@ const themeScript = `(function(){try{var s=localStorage.getItem("nutlify-theme")
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

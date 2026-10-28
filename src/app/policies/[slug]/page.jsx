@@ -9,7 +9,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  return { title: policies[slug]?.title || "Policy" };
+  const p = policies[slug];
+  if (!p) return { title: "Policy" };
+  const first = p.body[0]?.[1] || "";
+  return {
+    title: p.title,
+    description: `${p.title} for NUVANA by Nutlify. ${first}`.slice(0, 160),
+    alternates: { canonical: `/policies/${slug}` },
+  };
 }
 
 export default async function PolicyPage({ params }) {

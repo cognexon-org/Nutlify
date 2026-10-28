@@ -131,7 +131,7 @@ export default function Hero() {
           <Ornament className="w-40 sm:w-56" />
         </motion.div>
         <motion.h1 variants={item} className="w-full">
-          <span className="sr-only">NUVANA, </span>
+          <span className="sr-only">NUVANA by Nutlify: premium dry fruit & seed mix and fruit & berries mix. </span>
           <NuvanaLogo className="mx-auto h-auto w-[min(26rem,100%)]" />
         </motion.h1>
         {/* Rotating middle: pauses while hovered or focused */}
